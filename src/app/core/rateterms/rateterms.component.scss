@@ -1,0 +1,56 @@
+@import "src/assets/styles/styles.scss";
+.rateterm-container {
+  @include container();
+  height: calc(100vh - 100px);
+  background-color: white;
+  @include title();
+  @include subtitle();
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  hr.solid {
+    margin-top: 20px;
+    width: 100%;
+    border-top: 3px solid #bbb;
+  }
+  flex-direction: column;
+  form {
+    width: 30%;
+    @include button();
+    @include form-controller(
+      (
+        Properties: (
+          height: 20px,
+        ),
+      )
+    );
+    .discount {
+      display: flex;
+      justify-content: space-around;
+      .form-controller {
+        .form-container {
+          margin-right: 10px;
+          width: 100px;
+        }
+      }
+    }
+    .form-controller {
+      .form-container {
+        display: flex;
+        label {
+          height: 100%;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+    display: flex;
+    flex-direction: column;
+    button {
+      @include loader();
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<div class="login-container">
+  <h1>Facturas Ya!</h1>
+
+  <form [formGroup]="loginForm">
+    <div class="form-controller">
+      <label>Usuario</label>
+      <div class="form-container">
+        <input placeholder="Usuario" formControlName="user" type="email" />
+        <mat-icon>face</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="loginForm.get('user').errors && loginForm.get('user').touched"
+      >
+        Por favor ingrese su usuario
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Contraseña</label>
+      <div class="form-container">
+        <input
+          placeholder="Contraseña"
+          formControlName="password"
+          type="password"
+        />
+        <mat-icon>lock</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          loginForm.get('password').errors && loginForm.get('password').touched
+        "
+      >
+        Por favor ingrese su contraseña
+      </p>
+    </div>
+    <button (click)="logIn()">
+      <div class="loader" *ngIf="isLoading"></div>
+      <p *ngIf="!isLoading">Ingresar</p>
+    </button>
+
+    <p class="register" *ngIf="false" (click)="activeRegister()">
+      ¿No tienes una cuenta? Regístrate
+    </p>
+  </form>
+</div>

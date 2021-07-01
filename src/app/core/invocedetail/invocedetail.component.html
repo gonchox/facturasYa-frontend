@@ -1,0 +1,159 @@
+<div class="invoice-detail-container">
+  <h2>Datos de tu factura</h2>
+  <hr class="solid" />
+  <p>Fecha de descuento</p>
+  <p>{{ discountDate | date }}</p>
+  <form [formGroup]="invoiceForm">
+    <div class="form-controller">
+      <label>RUC de la empresa</label>
+      <div class="form-container">
+        <input
+          placeholder="RUC de la empresa"
+          formControlName="debtorRUC"
+          type="text"
+        />
+        <mat-icon>pin</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          invoiceForm.get('debtorRUC').errors &&
+          invoiceForm.get('debtorRUC').touched
+        "
+      >
+        Por favor ingrese su RUC
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Razón Social</label>
+      <div class="form-container">
+        <input
+          placeholder="Nombre de la empresa deudora"
+          formControlName="debtorName"
+          type="text"
+        />
+        <mat-icon>book</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          invoiceForm.get('debtorName').errors &&
+          invoiceForm.get('debtorName').touched
+        "
+      >
+        Por favor ingrese el nombre de la empresa deudora
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Moneda</label>
+      <div class="form-container">
+        <input
+          value="PEN"
+          formControlName="currency"
+          type="radio"
+          (change)="changeCurrency($event)"
+        />
+        <label>PEN</label>
+        <input
+          value="USD"
+          formControlName="currency"
+          type="radio"
+          (change)="changeCurrency($event)"
+        />
+        <label>USD</label>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          invoiceForm.get('currency').errors &&
+          invoiceForm.get('currency').touched
+        "
+      >
+        Por favor selecciones los dias por año
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Monto Total de la factura</label>
+      <div class="form-container">
+        <input
+          placeholder="Monto total"
+          formControlName="total"
+          type="number"
+        />
+        <mat-icon>paid</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          invoiceForm.get('total').errors && invoiceForm.get('total').touched
+        "
+      >
+        Por favor ingrese el monto total
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Retención</label>
+      <div class="form-container">
+        <input
+          placeholder="Retención"
+          formControlName="retention"
+          type="number"
+        />
+        <mat-icon>money_off</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          invoiceForm.get('retention').errors &&
+          invoiceForm.get('retention').touched
+        "
+      >
+        Por favor ingrese la cantidad de la retención
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Fecha de emisión</label>
+      <div class="form-container">
+        <input
+          placeholder="Fecha de emisión"
+          formControlName="issueDate"
+          type="date"
+        />
+        <mat-icon>today</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          invoiceForm.get('issueDate').errors &&
+          invoiceForm.get('issueDate').touched
+        "
+      >
+        Por favor seleccione la fecha de emisión
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Fecha de pago</label>
+      <div class="form-container">
+        <input
+          placeholder="Fecha de pago"
+          formControlName="paymentDay"
+          type="date"
+        />
+        <mat-icon>event</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          invoiceForm.get('paymentDay').errors &&
+          invoiceForm.get('paymentDay').touched
+        "
+      >
+        Por favor seleccione la fecha de pago
+      </p>
+    </div>
+    <button (click)="nextStep()">
+      <div class="loader" *ngIf="isLoading"></div>
+      <p *ngIf="!isLoading">Continuar</p>
+    </button>
+  </form>
+</div>

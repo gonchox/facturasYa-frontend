@@ -1,0 +1,36 @@
+@import "src/assets/styles/styles.scss";
+
+.invoice-detail-container {
+  @include container();
+  height: calc(100vh - 100px);
+  background-color: white;
+  @include title();
+  @include subtitle();
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  h2 {
+    margin-top: 20px;
+  }
+  hr.solid {
+    margin-top: 20px;
+    width: 100%;
+    border-top: 3px solid #bbb;
+  }
+  form {
+    width: 30%;
+    @include button();
+    @include form-controller(
+      (
+        Properties: (
+          height: 20px,
+        ),
+      )
+    );
+    button {
+      width: 100%;
+      @include loader();
+    }
+  }
+}

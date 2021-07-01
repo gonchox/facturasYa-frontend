@@ -1,0 +1,123 @@
+<div class="rateterm-container">
+  <h2>Tasa y Plazo</h2>
+  <hr class="solid" />
+  <form [formGroup]="rateForm" (onSubmit)="nextStep()">
+    <div class="form-controller">
+      <label>Dias por año</label>
+      <div class="form-container">
+        <input
+          value="360"
+          formControlName="daysPerYear"
+          type="radio"
+          (change)="changeYear($event)"
+        />
+        <label>360</label>
+        <input
+          value="365"
+          formControlName="daysPerYear"
+          type="radio"
+          (change)="changeYear($event)"
+        />
+        <label>365</label>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          rateForm.get('daysPerYear').errors &&
+          rateForm.get('daysPerYear').touched
+        "
+      >
+        Por favor selecciones los dias por año
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Plazo de Tasa</label>
+      <div class="form-container">
+        <select formControlName="rateTerm">
+          <option value="" selected disabled>Elija su plazo de tasa</option>
+          <option [ngValue]="'Diario'">Diario</option>
+          <option [ngValue]="'Quincenal'">Quincenal</option>
+          <option [ngValue]="'Mensual'">Mensual</option>
+          <option [ngValue]="'Bimestral'">Bimestral</option>
+          <option [ngValue]="'Trimestral'">Trimestral</option>
+          <option [ngValue]="'Cuatrimestral'">Cuatrimestral</option>
+          <option [ngValue]="'Semestral'">Semestral</option>
+          <option [ngValue]="'Anual'">Anual</option>
+        </select>
+
+        <mat-icon>event</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          rateForm.get('rateTerm').errors && rateForm.get('rateTerm').touched
+        "
+      >
+        Por favor ingrese su plazo
+      </p>
+    </div>
+    <div class="form-controller">
+      <label>Tasa Efectiva (TE %)</label>
+      <div class="form-container">
+        <input
+          placeholder="Tasa Efectiva"
+          formControlName="effectiveRate"
+          type="number"
+        />
+        <mat-icon>pin</mat-icon>
+      </div>
+      <p
+        class="error"
+        *ngIf="
+          rateForm.get('effectiveRate').errors &&
+          rateForm.get('effectiveRate').touched
+        "
+      >
+        Por favor ingrese su tasa efectiva
+      </p>
+    </div>
+    <label>Fecha de Descuento</label>
+    <div class="discount">
+      <div class="form-controller">
+        <label>Día</label>
+        <div class="form-container">
+          <input placeholder="Día" formControlName="day" type="number" />
+        </div>
+        <p
+          class="error"
+          *ngIf="rateForm.get('day').errors && rateForm.get('day').touched"
+        >
+          Por favor ingrese el día correctamente
+        </p>
+      </div>
+      <div class="form-controller">
+        <label>Mes</label>
+        <div class="form-container">
+          <input placeholder="Mes" formControlName="month" type="number" />
+        </div>
+        <p
+          class="error"
+          *ngIf="rateForm.get('month').errors && rateForm.get('month').touched"
+        >
+          Por favor ingrese el mes correctamente
+        </p>
+      </div>
+      <div class="form-controller">
+        <label>Año</label>
+        <div class="form-container">
+          <input placeholder="Año" formControlName="year" type="number" />
+        </div>
+        <p
+          class="error"
+          *ngIf="rateForm.get('year').errors && rateForm.get('year').touched"
+        >
+          Por favor ingrese el año correctamente
+        </p>
+      </div>
+    </div>
+    <button (click)="nextStep()">
+      <div class="loader" *ngIf="isLoading"></div>
+      <p *ngIf="!isLoading">Ingresar</p>
+    </button>
+  </form>
+</div>

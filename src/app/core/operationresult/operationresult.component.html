@@ -1,0 +1,73 @@
+<div class="operation-result-container">
+  <h2>Resultados</h2>
+  <hr class="solid" />
+
+  <div class="results">
+    <p>
+      VR: <a>{{ sumOfRecievedAmount | number }}</a>
+    </p>
+    <p>
+      TIR: <a>{{ invoices[0]!.tcea! | number }}%</a>
+    </p>
+    <p>
+      IGV: <a>{{ IGV | number }}</a>
+    </p>
+  </div>
+  <div class="invoices">
+    <div class="invoice" *ngFor="let invoice of invoices">
+      <p>
+        Fecha Giro: <a>{{ invoice.issueDate | date }}</a>
+      </p>
+      <p>
+        Valor Nominal: <a>{{ invoice.total }}</a>
+      </p>
+      <p>
+        Fecha de Vencimiento: <a>{{ invoice.paymentDay | date }}</a>
+      </p>
+      <p>
+        Días:
+        <a>{{ invoice.difDays }}</a>
+      </p>
+      <p>
+        Retención: <a>{{ invoice.retention }}</a>
+      </p>
+      <p>
+        TE%:
+        <a>{{ invoice.Te }}%</a>
+      </p>
+      <p>
+        d%:
+        <a>{{ invoice.d }}%</a>
+      </p>
+      <p>
+        Descuento:
+        <a>{{ invoice.discount | number }}</a>
+      </p>
+      <p>
+        Costo Inicial:
+        <a>{{ invoice.total * sumOfInitalCosts | number }}</a>
+      </p>
+      <p>
+        Costo Final:
+        <a>{{ invoice.total * sumOfFinalCosts | number }}</a>
+      </p>
+      <p>
+        Valor Neto:
+        <a>{{ invoice.netoValue | number }}</a>
+      </p>
+      <p>
+        Valor Recibido:
+        <a>{{ invoice.recibidoValue | number }}</a>
+      </p>
+      <p>
+        Valor Entregado:
+        <a>{{ invoice.entregadoValue | number }}</a>
+      </p>
+      <p>
+        TCEA:
+        <a>{{ invoice.tcea | number }}%</a>
+      </p>
+    </div>
+  </div>
+  <button (click)="endOperation()">Finalizar Operación</button>
+</div>

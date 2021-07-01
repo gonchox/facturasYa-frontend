@@ -1,0 +1,17 @@
+<div class="home-container">
+  <h2>Operaciones</h2>
+  <hr class="solid" />
+  <div class="operations">
+    <div class="new-operation" routerLink="/rate-terms">
+      <h2>Nueva Operación</h2>
+      <mat-icon>add</mat-icon>
+    </div>
+    <div class="single-operation" *ngFor="let operation of operations">
+      <h1>Operación</h1>
+      <h2>Monto Total</h2>
+      <p>{{ operation.totalAmount | number }}</p>
+      <h2>TIR</h2>
+      <p>{{ operation.tir | number }}%</p>
+    </div>
+  </div>
+</div>

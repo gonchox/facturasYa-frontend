@@ -1,0 +1,78 @@
+@import "src/assets/styles/styles.scss";
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+.login-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include title();
+  h1 {
+    font-size: 2rem;
+  }
+
+  form {
+    width: 100%;
+    margin-top: 10px;
+    @include form-controller(
+      (
+        Properties: (
+          height: 20px,
+        ),
+      )
+    );
+    @include button();
+    @include paragraph();
+    .form-controller {
+      p.error {
+        margin: 0;
+        font-weight: bold;
+        font-size: 15px;
+      }
+    }
+    p.register {
+      cursor: pointer;
+      color: rgb(1, 1, 184);
+      font-weight: 900;
+      margin-top: 15px;
+      font-size: 1.1rem;
+      transition: all 250ms ease;
+    }
+    p.register:hover {
+      transform: translateY(-10px);
+    }
+    button {
+      .loader {
+        border: 8px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 8px solid #3498db;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+      p {
+        font-family: "Varela Round", sans-serif;
+      }
+      width: 100%;
+    }
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,103 @@
+@import "src/assets/styles/styles.scss";
+
+.costs-container {
+  @include container();
+  height: calc(100vh - 100px);
+  background-color: white;
+  @include title();
+  @include subtitle();
+  @include button;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  h2 {
+    margin-top: 20px;
+  }
+  hr.solid {
+    margin-top: 20px;
+    width: 100%;
+    border-top: 3px solid #bbb;
+  }
+  @include form-controller(
+    (
+      Properties: (
+        height: 20px,
+      ),
+    )
+  );
+  .initial-cost {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .list-initial-cost {
+      @include container();
+      border: 2px solid;
+      border-radius: 10px;
+      width: 80%;
+      height: 100%;
+      padding: 10px;
+      .single-cost {
+        display: flex;
+        @include paragraph();
+        p {
+          font-size: 1.4rem;
+          margin-top: 5px;
+          margin-right: 10px;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        @include button();
+        button {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  .final-cost {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .list-final-cost {
+      @include container();
+      border: 2px solid;
+      border-radius: 10px;
+      width: 80%;
+      height: 100%;
+      padding: 10px;
+      .single-cost {
+        display: flex;
+        @include paragraph();
+        p {
+          font-size: 1.4rem;
+          margin-top: 5px;
+          margin-right: 10px;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        @include button();
+        button {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  .final-buttons {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      @include loader();
+      margin: 20px 20px 0 0;
+      width: 200px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import "src/assets/styles/styles.scss";
+.appbar-container {
+  width: calc(100vw - 20px);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include title();
+  padding: 10px;
+  background-color: #5956ea;
+  h1 {
+    color: white;
+  }
+  @include subtitle();
+  .cerrarSesion {
+    margin-right: 40px;
+    margin-bottom: 0;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid;
+    transition: all 250ms ease;
+  }
+  .cerrarSesion:hover {
+    transform: scale(0.95);
+  }
+}

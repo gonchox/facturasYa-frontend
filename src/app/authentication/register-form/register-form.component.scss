@@ -1,0 +1,42 @@
+@import "src/assets/styles/styles.scss";
+
+.login-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include title();
+  h1 {
+    font-size: 2rem;
+  }
+
+  form {
+    width: 100%;
+    margin-top: 10px;
+    @include form-controller(
+      (
+        Properties: (
+          height: 20px,
+        ),
+      )
+    );
+    @include button();
+    @include paragraph();
+    p {
+      cursor: pointer;
+      color: rgb(1, 1, 184);
+      font-weight: 900;
+      margin-top: 15px;
+      font-size: 1.1rem;
+      transition: all 250ms ease;
+    }
+    p:hover {
+      transform: translateY(-10px);
+    }
+    button {
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+}

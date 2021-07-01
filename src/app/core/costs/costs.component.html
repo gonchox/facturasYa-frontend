@@ -1,0 +1,214 @@
+<div class="costs-container">
+  <h2>Costo Inicial</h2>
+  <hr class="solid" />
+  <div class="initial-cost">
+    <form [formGroup]="initialcostForm">
+      <div class="form-controller">
+        <label>Motivo</label>
+        <div class="form-container">
+          <select formControlName="reason">
+            <option value="" selected disabled>
+              Elija la razón de su gasto
+            </option>
+            <option [ngValue]="'Fotocopias'">Fotocopias</option>
+            <option [ngValue]="'Comisión de estudio'">
+              Comisión de estudio
+            </option>
+            <option [ngValue]="'Comisión de desembolso'">
+              Comisión de desembolso
+            </option>
+            <option [ngValue]="'Comisión de intermediación'">
+              Comisión de intermediación
+            </option>
+            <option [ngValue]="'Gastos de administración'">
+              Gastos de administración
+            </option>
+            <option [ngValue]="'Gastos notariales'">Gastos notariales</option>
+            <option [ngValue]="'Gastos notariales'">Gastos registrales</option>
+            <option [ngValue]="'Gastos notariales'">Portes</option>
+            <option [ngValue]="'Gastos notariales'">Seguro</option>
+          </select>
+          <mat-icon>book</mat-icon>
+        </div>
+        <p
+          class="error"
+          *ngIf="
+            initialcostForm.get('reason').errors &&
+            initialcostForm.get('reason').touched
+          "
+        >
+          Por favor seleccione su motivo
+        </p>
+      </div>
+      <div class="form-controller">
+        <label>Valor expresado en</label>
+        <div class="form-container">
+          <input
+            value="Efectivo"
+            formControlName="expressedName"
+            type="radio"
+            (change)="changeExpressedName($event)"
+          />
+          <label>Efectivo</label>
+          <input
+            value="Porcentaje"
+            formControlName="expressedName"
+            type="radio"
+            (change)="changeExpressedName($event)"
+          />
+          <label>Porcentaje</label>
+        </div>
+        <p
+          class="error"
+          *ngIf="
+            initialcostForm.get('expressedName').errors &&
+            initialcostForm.get('expressedName').touched
+          "
+        >
+          Por favor selecciones el valor expresado
+        </p>
+      </div>
+      <div class="form-controller">
+        <label>Monto</label>
+        <div class="form-container">
+          <input
+            placeholder="Monto"
+            formControlName="expressedValue"
+            type="number"
+          />
+          <mat-icon>pin</mat-icon>
+        </div>
+        <p
+          class="error"
+          *ngIf="
+            initialcostForm.get('expressedValue').errors &&
+            initialcostForm.get('expressedValue').touched
+          "
+        >
+          Por favor ingrese su monto correctamente
+        </p>
+      </div>
+    </form>
+    <div class="list-initial-cost mat-elevation-z5">
+      <div class="buttons">
+        <button (click)="addCost()">Agregar</button>
+        <button (click)="deleteInitialCost()">Eliminar</button>
+      </div>
+      <h2 *ngIf="initialcost.length == 0">No ha agregado ningún gasto</h2>
+      <div class="initial-costs">
+        <div class="single-cost" *ngFor="let cost of initialcost">
+          <p>{{ cost.reason }}</p>
+          <p>
+            {{ cost.expressedValue
+            }}{{ cost.expressedName == "Efectivo" ? "" : "%" }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2>Costo Final</h2>
+  <hr class="solid" />
+  <div class="final-cost">
+    <form [formGroup]="finalcostForm">
+      <div class="form-controller">
+        <label>Motivo</label>
+        <div class="form-container">
+          <select formControlName="reason">
+            <option value="" selected disabled>
+              Elija la razón de su gasto
+            </option>
+            <option [ngValue]="'Gastos de administración'">
+              Gastos de administración
+            </option>
+
+            <option [ngValue]="'Portes'">Portes</option>
+          </select>
+          <mat-icon>book</mat-icon>
+        </div>
+        <p
+          class="error"
+          *ngIf="
+            finalcostForm.get('reason').errors &&
+            finalcostForm.get('reason').touched
+          "
+        >
+          Por favor seleccione su motivo
+        </p>
+      </div>
+      <div class="form-controller">
+        <label>Valor expresado en</label>
+        <div class="form-container">
+          <input
+            value="Efectivo"
+            formControlName="expressedName"
+            type="radio"
+            (change)="changeExpressedName2($event)"
+          />
+          <label>Efectivo</label>
+          <input
+            value="Porcentaje"
+            formControlName="expressedName"
+            type="radio"
+            (change)="changeExpressedName2($event)"
+          />
+          <label>Porcentaje</label>
+        </div>
+        <p
+          class="error"
+          *ngIf="
+            finalcostForm.get('expressedName').errors &&
+            finalcostForm.get('expressedName').touched
+          "
+        >
+          Por favor selecciones el valor expresado
+        </p>
+      </div>
+      <div class="form-controller">
+        <label>Monto</label>
+        <div class="form-container">
+          <input
+            placeholder="Monto"
+            formControlName="expressedValue"
+            type="number"
+          />
+          <mat-icon>pin</mat-icon>
+        </div>
+        <p
+          class="error"
+          *ngIf="
+            finalcostForm.get('expressedValue').errors &&
+            finalcostForm.get('expressedValue').touched
+          "
+        >
+          Por favor ingrese su monto correctamente
+        </p>
+      </div>
+    </form>
+    <div class="list-final-cost mat-elevation-z5">
+      <div class="buttons">
+        <button (click)="addCostFinal()">Agregar</button>
+        <button (click)="deleteFinalCost()">Eliminar</button>
+      </div>
+      <h2 *ngIf="finalcost.length == 0">No ha agregado ningún gasto</h2>
+      <div class="final-costs">
+        <div class="single-cost" *ngFor="let cost of finalcost">
+          <p>{{ cost.reason }}</p>
+          <p>
+            {{ cost.expressedValue
+            }}{{ cost.expressedName == "Efectivo" ? "" : "%" }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="final-buttons">
+    <button (click)="createNewInvoice()">
+      <div class="loader" *ngIf="isLoading"></div>
+      <p *ngIf="!isLoading">Agregar</p>
+    </button>
+    <button (click)="endFlow()">
+      <div class="loader" *ngIf="isLoading"></div>
+      <p *ngIf="!isLoading">Finalizar</p>
+    </button>
+  </div>
+</div>
